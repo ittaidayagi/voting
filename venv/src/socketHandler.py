@@ -7,9 +7,9 @@ import threading
 class SocketHandler():
 
     def __init__(self):
-        self.server_ip = "127.0.0.1"
+        self.server_ip = "192.168.8.13"
         self.server_port = 4545
-        self.number_of_sessions = 1
+        self.number_of_sessions = 2
         self.sessions = {}
         self.users_count = 1
 
@@ -44,6 +44,7 @@ class SocketHandler():
         threads = []
         for num in range(users_count):
             conn, addr = sock.accept()
+            print addr
             thread = threading.Thread(target=self.on_new_connection,args=(conn,addr))
             threads.append(thread)
             thread.start()
