@@ -3,10 +3,11 @@ import db_utils
 
 class clientHandler():
 
-    def __init__(self, client_ip, client_id):
+    def __init__(self, client_ip, client_id, socket_handler):
 
         self.client_ip = client_ip
         self.client_id = client_id
+        self.socket_handler = socket_handler
         self.main()
 
     def check_ballot(self):
@@ -19,9 +20,14 @@ class clientHandler():
             collection.database.client.close()
             return False
 
+    def close_connection(self):
+
+        self.socket_handler.close_socket(self.client_id)
+
     def main(self):
 
         if self.check_ballot():
             print "cool bro"
         else:
            print "Your not authorized dude"
+        self.close_connection()

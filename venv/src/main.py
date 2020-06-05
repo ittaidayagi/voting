@@ -1,8 +1,10 @@
 from clientHandler import clientHandler
+from socketHandler import SocketHandler
 
 def main():
 
-    client = clientHandler("127.0.0.2", 1)
+    socket_handler = SocketHandler()
+    socket_handler.wait_for_connections()
 
 if __name__ == "__main__":
     main()
