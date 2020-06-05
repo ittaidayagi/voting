@@ -13,8 +13,10 @@ class clientHandler():
 
         collection =  db_utils.connect_to_collection(config().get("DB_HOST"), config().get("DB_PORT"), "ballots")
         if db_utils.query_collection(collection,{"ip": self.client_ip}):
+            collection.database.client.close()
             return True
         else:
+            collection.database.client.close()
             return False
 
     def main(self):
