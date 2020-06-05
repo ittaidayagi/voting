@@ -28,6 +28,7 @@ class clientHandler():
 
         if self.check_ballot():
             print "cool bro"
+            self.socket_handler.communicate_with_client(self.client_id, "good boi")
         else:
            print "Your not authorized dude"
         self.close_connection()

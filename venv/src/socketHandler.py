@@ -25,6 +25,13 @@ class SocketHandler():
         session.close()
         print "closed"
 
+    def communicate_with_client(self, session_uuid, msg):
+
+        session = self.sessions[session_uuid]
+        session.send(msg)
+        session.settimeout(1)
+        try: return session.recv(1024)
+        except: return None
 
     def wait_for_connections(self):
 
