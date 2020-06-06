@@ -9,6 +9,10 @@ class config():
             "VALID_KEYS_TO_COLLECTION": {"users": ["Personal_ID", "ballot", "pwd"], "ballots": ["ip", "name", "results"]}
         }
 
+        self.messages = {
+            "ASK_PERSONAL_ID": {"message_id": 1, "message": "please send your personal id", key: "{0}"}
+        }
+
     def get(self, key):
 
         if key in self.config_file.keys():
@@ -17,3 +21,8 @@ class config():
         else:
             return False, "There is no such key"
 
+    def get_message(self, key):
+        if key in self.messages.keys():
+            return self.messages[key]
+        else:
+            return False, "There is no such message"
