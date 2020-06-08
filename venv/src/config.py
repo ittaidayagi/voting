@@ -6,11 +6,13 @@ class config():
             "DB_PORT": 27017,
             "DB_NAME": "votes",
             "GOOD_COLLECTIONS": ["users", "ballots"],
-            "VALID_KEYS_TO_COLLECTION": {"users": ["Personal_ID", "ballot", "pwd"], "ballots": ["ip", "name", "results"]}
+            "VALID_KEYS_TO_COLLECTION": {"users": ["Personal_ID", "ballot", "pwd"], "ballots": ["ip", "name", "results"]},
+            "ASYMMETRIC_MESSAGE": [1],
+            "SYMMETROC_MESSAGE": []
         }
 
         self.messages = {
-            "ASK_PERSONAL_ID": {"message_id": 1, "message": "please send your personal id", key: "{0}"}
+            "ASK_PERSONAL_ID": {"message_id": 1, "message": "please send your personal id", "key": "{0}"}
         }
 
     def get(self, key):
